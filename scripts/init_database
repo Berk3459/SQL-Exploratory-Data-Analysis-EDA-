@@ -1,0 +1,28 @@
+/*
+This script creates a database named 'DataWarehouse' and checks if it already exists
+*/
+
+
+USE master;
+
+--Check if database named 'DataWarehouse' exists.if so drop it and then create it.
+
+IF EXISTS (SELECT 1 FROM  sys.databases WHERE name = 'DataWareHouse')
+BEGIN
+	DROP DATABASE DataWareHouse;
+	CREATE DATABASE DataWareHouse
+END;
+GO
+
+USE DataWareHouse;
+GO
+
+--Create schemas
+CREATE SCHEMA bronze;
+GO
+
+CREATE SCHEMA silver;
+GO
+
+CREATE SCHEMA gold;
+GO
