@@ -1,0 +1,35 @@
+
+/*
+This script loads the data in the csv file into table using "BULK INSERT" command. 
+*/
+
+
+-- change the default date format to insert data correctly.if we do not do that, we cannot insert data into table.
+-- Because invoice date column in the sales file is in day, month, year format.
+SET DATEFORMAT dmy
+
+--if data in the csv file updated, we can update the table by executing this code as well
+TRUNCATE TABLE bronze.sales;
+
+BULK INSERT bronze.sales
+FROM 'C:\Users\Berk\Downloads\archive (6)\sales_data.csv'
+WITH (
+FIRSTROW = 2,
+FIELDTERMINATOR = ','
+);
+
+PRINT '-----------------------'
+PRINT 'Loading sales table'
+PRINT '-----------------------'
+
+--if data in the csv file updated, we can update the table by executing this code as well
+TRUNCATE TABLE bronze.customer;
+BULK INSERT bronze.customer
+FROM 'C:\Users\Berk\Downloads\archive (6)\customer_data.csv'
+WITH (
+FIRSTROW = 2,
+FIELDTERMINATOR = ','
+);
+PRINT '-----------------------'
+PRINT 'Loading customer table'
+PRINT '-----------------------'
