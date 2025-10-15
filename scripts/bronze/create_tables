@@ -1,0 +1,29 @@
+
+
+/* This script creates tables in the bronze schema*/
+
+
+-- if bronze.sales table already exists,it is going to be dropped
+  IF OBJECT_ID ('bronze.sales','U') IS NOT NULL
+	DROP TABLE bronze.sales;
+
+CREATE TABLE bronze.sales (
+	invoice_no NVARCHAR(15),
+	customer_id NVARCHAR(15),
+	category NVARCHAR(50),
+	quantity INT,
+	price INT,
+	invoice_date DATE,
+	shopping_mall NVARCHAR(50)
+	);
+--if bronze.customer table already exists,it is going to be dropped
+IF OBJECT_ID ('bronze.customer','U') IS NOT NULL
+	DROP TABLE bronze.customer;
+
+CREATE TABLE bronze.customer (
+	customer_id NVARCHAR(50),
+	gender NVARCHAR(10),
+	age INT,
+	payment_method NVARCHAR(20)
+
+);
