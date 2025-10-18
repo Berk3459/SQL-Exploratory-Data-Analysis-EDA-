@@ -14,8 +14,8 @@ CREATE TABLE silver.sales (
 	shopping_mall NVARCHAR(50)
 	);
 --if silver.customer table already exists,it is going to be dropped
-IF OBJECT_ID ('bronze.customer','U') IS NOT NULL
-	DROP TABLE bronze.customer;
+IF OBJECT_ID ('silver.customer','U') IS NOT NULL
+	DROP TABLE silver.customer;
 
 CREATE TABLE silver.customer (
 	customer_id NVARCHAR(50),
